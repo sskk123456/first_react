@@ -17,3 +17,16 @@ model User {
   updatedAt DateTime @updatedAt
   username  String   @unique
 }
+
+model Addr {
+  addr      Addr?    @relation(name: "AddrOnAddrs", fields: [addrId], references: [id])
+  addrId    String?
+  addrs     Addr[]   @relation(name: "AddrOnAddrs")
+  createdAt DateTime @default(now())
+  district  String?
+  fullname  String?
+  id        String   @id @default(cuid())
+  tel       String?
+  updatedAt DateTime @updatedAt
+  userId    String?
+}
